@@ -1,40 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# AnimeExpress
 
-## Getting Started
+AnimeExpress é um site dedicado a disponibilizar informações sobre animes de forma rápida e organizada. Desenvolvido com foco em consolidar o aprendizado em desenvolvimento web, o projeto utiliza tecnologias modernas para proporcionar uma experiência fluida ao usuário.
 
-First, run the development server:
+---
 
-```bash
+## Índice
+
+- [Sobre o Projeto](#sobre-o-projeto)  
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)  
+- [Funcionalidades](#funcionalidades)  
+- [Como Rodar o Projeto](#como-rodar-o-projeto)  
+- [Estrutura do Projeto](#estrutura-do-projeto)  
+- [Contribuição](#contribui%C3%A7%C3%A3o)  
+- [Licença](#licen%C3%A7a)  
+
+---
+
+## Sobre o Projeto
+
+AnimeExpress foi criado como projeto pessoal para consolidar conhecimentos em desenvolvimento front-end e back-end. O site permite que os usuários explorem uma lista de animes, visualizem detalhes, e navegarem por um catálogo atualizado.
+
+---
+
+## Tecnologias Utilizadas
+
+- **React** — Biblioteca para construção da interface do usuário  
+- **Next.js** — Framework React para SSR e geração estática  
+- **Tailwind CSS** — Framework CSS utilitário para estilização rápida  
+- **Node.js & Express** — Back-end para servir dados e API  
+- **API Externa de Animes** — Integração com APIs para obter dados atualizados  
+
+---
+
+## Funcionalidades
+
+- Listagem de animes populares  
+- Visualização detalhada de cada anime  
+- Busca por título  
+- Navegação fluida entre páginas  
+- Layout responsivo para dispositivos móveis  
+
+---
+
+## Como Rodar o Projeto
+
+### Pré-requisitos
+
+- Node.js instalado
+- Git  
+
+### Passos
+
+1. Clone o repositório:
+
+git clone <https://github.com/denilsonbezerra/animes-express.git>
+
+2. Acesse a pasta do projeto:
+
+cd animes-express
+
+3. Instale as dependências:
+
+npm install
+
+4. Rode o servidor de desenvolvimento:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+5. Abra o navegador em [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Estrutura do Projeto
+
+```
+/animes-express
+├── /public          # Arquivos estáticos (imagens, favicon etc.)
+├── /src             # Código fonte da aplicação
+│   ├── /components  # Componentes React reutilizáveis
+│   ├── /pages       # Páginas da aplicação (Next.js)
+│   └── /styles      # Arquivos CSS / Tailwind
+├── package.json     # Configurações do npm e scripts
+└── README.md        # Documentação do projeto
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Contribuição
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Contribuições são bem-vindas!  
+Para contribuir, siga os passos:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+1. Faça um fork do projeto  
+2. Crie uma branch para sua feature (`git checkout -b feature/nome-da-feature`)  
+3. Faça commit das suas alterações (`git commit -m 'feat: descrição da feature'`)  
+4. Envie para a branch original (`git push origin feature/nome-da-feature`)  
+5. Abra um Pull Request no repositório principal  
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Licença
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Este projeto está licenciado sob a licença MIT — veja o arquivo [LICENSE](LICENSE) para mais detalhes.
