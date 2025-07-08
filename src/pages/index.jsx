@@ -56,8 +56,16 @@ export default function Login() {
       const response = await instance.post('/login', formData)
       localStorage.setItem('token', response.data.token)
 
+      const user = await instance.get('/profile')
+      localStorage.setItem(
+        'user',
+        JSON.stringify(user.data)
+      )
+
       router.push('/animes')
     } catch (error) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
       console.log(error)
     }
   }
