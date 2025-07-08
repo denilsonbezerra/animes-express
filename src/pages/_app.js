@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
         theme="dark"
         hideProgressBar={false}
       />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   )
 }

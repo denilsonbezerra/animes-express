@@ -7,7 +7,7 @@ export default function CardAnime({ anime }) {
         gender,
         description,
         rating,
-        imageURL,
+        imageUrl,
         episodes
     } = anime
 
@@ -51,10 +51,10 @@ export default function CardAnime({ anime }) {
     return (
         <div className="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-102 border border-gray-700 hover:border-red-400/50">
             {/* Imagem do anime */}
-            <div className="relative h-64 max-h-[576px] w-full overflow-hidden">
-                {imageURL ? (
+            <div className="relative h-64 max-h-[180px] w-full overflow-hidden">
+                {imageUrl ? (
                     <img
-                        src={imageURL}
+                        src={imageUrl}
                         alt={title}
                         className="object-cover group-hover:scale-108 transition-transform duration-300 w-full h-full"
                     />
@@ -75,7 +75,7 @@ export default function CardAnime({ anime }) {
             </div>
 
             {/* Conteúdo do card */}
-            <div className="p-5 flex flex-col justify-between min-h-[320px]">
+            <div className="p-5 flex flex-col justify-between min-h-[310px]">
                 {/* Título */}
                 <h3 className=" text-[20px] font-bold text-white mb-2 line-clamp-2 group-hover:text-red-400 transition-colors duration-300">
                     {title || 'Título não disponível'}
