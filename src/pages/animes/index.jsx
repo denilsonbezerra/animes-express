@@ -1,25 +1,28 @@
 import CardAnime from "@/components/CardAnime";
 import ModalCreateAnimes from "@/components/ModalCreateAnime";
 import PageWrapper from "@/components/PageWrapper";
+import SpinnerLoad from "@/components/SpinnerLoad";
 import useUserData from "@/hooks/use-user-data";
 import instance from "@/instance/api";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Animes() {
+    const [loading, setLoading] = useState(true)
     const [animes, setAnimes] = useState([])
     const [openModal, setOpenModal] = useState(false)
 
     const user = useUserData()
 
     useEffect(() => {
-        // Acessar os animes no banco de dados
         async function getAnimes() {
             try {
                 const animes = await instance.get("/animes")
                 setAnimes(animes.data)
             } catch (error) {
                 console.log(error)
+            } finally {
+                setLoading(false)
             }
         }
 
@@ -28,8 +31,9 @@ export default function Animes() {
 
     async function postAnime(animeData) {
         try {
-            if (user.role !== 'admin') {
+            if (user.role !== "admin") {
                 localStorage.removeItem("token")
+                localStorage.removeItem("user")
                 router.push("/animes")
             }
 
@@ -46,6 +50,10 @@ export default function Animes() {
 
     return (
         <PageWrapper>
+            {loading &&
+                <SpinnerLoad />
+            }
+
             {user?.role === 'admin' &&
                 <div className="w-full flex justify-end mb-[10px]">
                     <button
@@ -57,7 +65,7 @@ export default function Animes() {
                 </div>
             }
 
-            <div className="h-fit grid grid-cols-4 gap-4">
+            <div className="h-full grid grid-cols-4 gap-4">
                 {animes.map((anime) => {
                     return (
                         <CardAnime key={anime.id} anime={anime} />
