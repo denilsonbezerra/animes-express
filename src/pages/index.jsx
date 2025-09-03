@@ -14,6 +14,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState({})
 
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -21,7 +22,6 @@ export default function Login() {
       [name]: value
     }))
 
-    // Limpar erro quando o usuário começar a digitar
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -51,6 +51,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    validateForm()
 
     try {
       const response = await instance.post('/login', formData)
