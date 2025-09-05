@@ -17,10 +17,12 @@ export default function Animes() {
     useEffect(() => {
         async function getAnimes() {
             try {
+                setLoading(true)
                 const animes = await instance.get("/animes")
                 setAnimes(animes.data)
             } catch (error) {
                 console.log(error)
+                toast.error("Erro ao carregar animes")
             } finally {
                 setLoading(false)
             }
@@ -29,24 +31,24 @@ export default function Animes() {
         getAnimes()
     }, [])
 
-    async function postAnime(animeData) {
-        try {
-            if (user.role !== "admin") {
-                localStorage.removeItem("token")
-                localStorage.removeItem("user")
-                router.push("/animes")
+        async function postAnime(animeData) {
+            try {
+                if (user.role !== "admin") {
+                    localStorage.removeItem("token")
+                    localStorage.removeItem("user")
+                    router.push("/animes")
+                }
+
+                const response = await instance.post("/anime", animeData)
+
+                setAnimes([...animes, response.data])
+                setOpenModal(false)
+                toast.success("Anime adicionado com sucesso")
+            } catch (error) {
+                toast.error("Erro ao adicionar anime")
+                console.log(error)
             }
-
-            const response = await instance.post("/anime", animeData)
-
-            setAnimes([...animes, response.data])
-            setOpenModal(false)
-            toast.success("Anime adicionado com sucesso")
-        } catch (error) {
-            toast.error("Erro ao adicionar anime")
-            console.log(error)
         }
-    }
 
     return (
         <PageWrapper>
