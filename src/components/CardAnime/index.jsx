@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import instance from '@/instance/api';
 import useUserData from '@/hooks/use-user-data';
 
@@ -140,7 +139,7 @@ const CardAnime = ({ anime }) => {
   return (
     <>
       <div 
-        className="group w-[350px] relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-700 hover:border-red-400/50 cursor-pointer"
+        className="group w-[350px] relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-103 border border-gray-700 hover:border-red-400/50 cursor-pointer"
         onClick={openModal}
       >
         {/* Imagem do anime */}
@@ -185,7 +184,7 @@ const CardAnime = ({ anime }) => {
               {renderStars(rating || 0)}
             </div>
             <span className="text-gray-400 text-sm">
-              {rating ? `${rating.toFixed(1)}/10` : 'Sem avaliação'}
+              {rating ? `${rating.toFixed(1)}/5` : 'Sem avaliação'}
             </span>
           </div>
           
@@ -316,7 +315,7 @@ const CardAnime = ({ anime }) => {
                 <button
                   type="submit"
                   disabled={!newMessage.trim() || loading}
-                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white p-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"
+                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white p-[15px] rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50 rotate-90"
                 >
                   {loading ? (
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
