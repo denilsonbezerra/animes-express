@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 import Head from 'next/head';
 import Link from 'next/link';
 import instance from '@/instance/api';
@@ -32,41 +33,52 @@ export default function Login() {
 
   const validateForm = () => {
     const newErrors = {}
-
-    if (!formData.email) {
-      newErrors.email = 'Email é obrigatório'
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email inválido'
     }
 
+    if (!formData.email) {
+      newErrors.email = 'Email é obrigatório'
+    } 
+
     if (!formData.password) {
       newErrors.password = 'Senha é obrigatória'
-    } else if (formData.password.length < 8) {
-      newErrors.password = 'Senha deve ter pelo menos 8 caracteres'
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      setIsLoading(false)
+      return false
+    }
+
+    return true
   }
 
   const handleSubmit = async (e) => {
+    setIsLoading(true)
     e.preventDefault()
-    validateForm()
+
+    const isValid = validateForm()
+    if (!isValid) {
+      setIsLoading(false)
+      return
+    }
 
     try {
       const response = await instance.post('/login', formData)
       localStorage.setItem('token', response.data.token)
-
+      
       const user = await instance.get('/profile')
       localStorage.setItem(
         'user',
         JSON.stringify(user.data)
       )
-
+      
       router.push('/animes')
     } catch (error) {
-      localStorage.removeItem('token')
-      localStorage.removeItem('user')
+      toast.warn('Usuário ou senha incorretos, tente novamente')
+      setIsLoading(false)
       console.log(error)
     }
   }
